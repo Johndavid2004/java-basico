@@ -10,24 +10,21 @@ package javabasico;
  */
 public class Ejercicio3 {
     public static void main(String[] args) {
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-        int pisoActual = 1;
-        
-        System.out.println("================================ ASCENSOR INTELIGENTE ================================");
-        
-        double pesoUsuario = tomarPeso(scanner);
-        if (validarPeso(pesoUsuario)) {
-            int pisoDestino = tomarPiso(scanner);
-            if (validarPiso(pisoDestino)) {
-                moverAscensor(pisoDestino);
+        try (java.util.Scanner scanner = new java.util.Scanner(System.in)) {
+            System.out.println("================================ ASCENSOR INTELIGENTE ================================");
+            
+            double pesoUsuario = tomarPeso(scanner);
+            if (validarPeso(pesoUsuario)) {
+                int pisoDestino = tomarPiso(scanner);
+                if (validarPiso(pisoDestino)) {
+                    moverAscensor(pisoDestino);
+                } else {
+                    System.out.println(" !Error¡: Piso fuera de rango. Intente de nuevo. ");
+                }
             } else {
-                System.out.println(" !Error¡: Piso fuera de rango. Intente de nuevo. ");
+                System.out.println(" !Error¡: El ascensor está sobrecargado. No puede moverse. ");
             }
-        } else {
-            System.out.println(" !Error¡: El ascensor está sobrecargado. No puede moverse. ");
         }
-        
-        scanner.close();
     }
     
     public static double tomarPeso(java.util.Scanner scanner) {

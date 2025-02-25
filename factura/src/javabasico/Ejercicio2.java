@@ -10,26 +10,33 @@ package javabasico;
  */
 import java.util.Scanner;
 public class Ejercicio2 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int pisoActual = 1;
-        int pisoMinimo = 1;
-        int pisoMaximo = 20;
-        
-        System.out.println("============================== SIMULADOR DE ASCENSOR ==============================");
-        System.out.println(" El ascensor está en el piso: " + pisoActual);
-        System.out.print(" Ingrese el piso al que desea ir (" + pisoMinimo + " - " + pisoMaximo + "): ");
-        
-        int pisoDestino = scanner.nextInt();
-        
-        if (pisoDestino >= pisoMinimo && pisoDestino <= pisoMaximo) {
-            System.out.println(" Piso válido. El ascensor se está moviendo al piso... " + pisoDestino);
-            pisoActual = pisoDestino;
-            System.out.println(" !Atención¡. El ascensor ha llegado al piso... " + pisoActual);
-        } else {
-            System.out.println(" !Error¡ Piso inválido. Por favor, ingrese un número entre " + pisoMinimo + " y " + pisoMaximo + ".");
-        }
-        
-        scanner.close();
+     public static void main(String[] args) {
+        ejecutar();
+    }
+    
+    public static void ejecutar() {
+         try (Scanner scanner = new Scanner(System.in)) {
+             System.out.println("================================ ASCENSOR SIMULADO ================================");
+             
+             int pisoDestino = tomarPiso(scanner);
+             if (validarPiso(pisoDestino)) {
+                 moverAscensor(pisoDestino);
+             } else {
+                 System.out.println(" !Error¡: Piso fuera de rango. Intente de nuevo.");
+             }}
+    }
+    
+    public static int tomarPiso(Scanner scanner) {
+        System.out.print(" Por favor. Ingrese el piso al que desea ir (1 - 20): ");
+        return scanner.nextInt();
+    }
+    
+    public static boolean validarPiso(int piso) {
+        return piso >= 1 && piso <= 10;
+    }
+    
+    public static void moverAscensor(int pisoDestino) {
+        System.out.println(" El ascensor está en camino " + pisoDestino + "...");
+        System.out.println(" El ascensor ha llegado a su destino " + pisoDestino);
     }
 }
