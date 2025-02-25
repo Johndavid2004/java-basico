@@ -50,4 +50,8 @@ public class Ejercicio3 {
         System.out.println(" El ascensor está en movimiento " + pisoDestino + "...");
         System.out.println(" El ascensor ha llegado al piso indicado " + pisoDestino);
     }
+
+    void ejecutar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
